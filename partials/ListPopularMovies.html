@@ -1,0 +1,57 @@
+<!-- 
+	home page body.
+	
+	Show the pupular movies and the in theather movies
+
+-->
+<div class="row">
+   <div class="col-xs-8">
+   <!-- Panel of popular movies-->
+      <div class="panel panel-default">
+         <div class="panel-heading">
+            Most Popular Movies
+         </div>
+		 <!-- print the result of the popular movies -->
+         <div ng-repeat="movie in listPopularMovie">
+            <div class="col-xs-6 col-md-3">
+               <div class="thumbnail">
+                  <a href="#/DetailMovie/{{movie.id}}" title="{{movie.title}}" alt="{{movie.title}}">
+                  <img class="center-topic thumbnail" ng-src="http://image.tmdb.org/t/p/w130/{{movie.poster_path}}" ng-hide="movie.poster_path == null" alt="{{movie.title}}"/>
+                  <img class="center-topic thumbnail" ng-src="images/default_large.png" ng-hide="movie.poster_path != null" alt="{{movie.title}}"/>
+                  </a>
+                  <div class="caption">
+                     <h5><p class="text-center"><a href="#/DetailMovie/{{movie.id}}">{{movie.title}}</a></p></h5>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="col-xs-4">
+   <!-- Panel of in Theatres-->
+      <div class="panel panel-default">
+         <div class="panel-heading">
+            In Theatres
+         </div>
+         <table class="table table-striped">
+			<!-- print the result of the movies in Theatres-->
+            <tr ng-repeat="movie in listMoviesInTheatres">
+               <td>
+                  <div class="media">
+                     <div class="media-left">
+                        <a href="#/DetailMovie/{{movie.id}}">
+                        <img class="media-object" ng-src="http://image.tmdb.org/t/p/w130/{{movie.poster_path}}" ng-hide="movie.poster_path == null"/>
+                        <img class="media-object" ng-src="images/default_large.png" ng-hide="movie.poster_path != null"/>
+                        </a>
+                     </div>
+                     <div class="media-body">
+                        <h5 class="media-heading"><a href="#/DetailMovie/{{movie.id}}">{{movie.title}}</a></h5>
+                     </div>
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </div>
+   </div>
+</div>
+

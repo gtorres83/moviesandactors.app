@@ -1,0 +1,43 @@
+<!-- 
+
+	Show the result of the search by actor
+
+-->
+<!-- Panel of result of the search -->
+<div class="row">	
+   <div class="panel panel-default">
+      <div class="panel-heading">
+         Actor List ({{totalResultActor}} Results)
+      </div>
+	  <!-- print the result of the search -->
+      <div ng-repeat="actor in listActor">
+         <div class="col-xs-6 col-md-3">
+            <div class="thumbnail">
+               <a href="#/DetailActor/{{actor.id}}" title="{{actor.name}}" alt="{{actor.name}}">
+               <img class="center-topic thumbnail" ng-src="http://image.tmdb.org/t/p/w130/{{actor.profile_path}}" ng-hide="actor.profile_path == null" alt="{{actor.name}}"/>
+               <img class="center-topic thumbnail" ng-src="images/default_large.png" ng-hide="actor.profile_path != null" alt="{{actor.name}}"/>
+               </a>
+               <div class="caption">
+                  <h5><p class="text-center"><a href="#/DetailActor/{{actor.id}}">{{actor.name}}</a></p></h5>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<hr />
+<!-- Panel of pagination.  Only show when there are results -->
+<div ng-show="totalResultActor > 0">
+   <nav aria-label="Page navigation">
+      <ul class="pagination">
+         <li class="previous"><a href="" ng-click="findListActor(1)"><span aria-hidden="true">&larr;</span> First</a></li>
+      </ul>
+      <ul class="pagination" ng-repeat="n in [].constructor(totalPage) track by $index">
+         <li><a href="" ng-click="findListActor($index+1)" >{{$index+1}}</a></li>
+      </ul>
+      <ul class="pagination">
+         <li class="next"><a href="" ng-click="findListActor(totalPage)">Last <span aria-hidden="true">&rarr;</span></a></li>
+      </ul>
+   </nav>
+</div>
+

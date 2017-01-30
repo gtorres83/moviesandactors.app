@@ -1,0 +1,36 @@
+<!doctype html>
+<!-- 
+	
+	Main page app
+
+-->
+<html lang="es" ng-app="appMovieActor">
+   <head>
+      <meta charset="utf-8">
+      <title>Movie And Actors Store</title>
+	  <!-- Import the css libraries -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+      <link rel="stylesheet" href="styles\app-movies.css">
+   </head>
+   <body>
+	  <!-- Import the javascript libraries -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+      <script src="https://code.angularjs.org/1.5.0/angular-route.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  
+	  <!-- Import the logical app javascript  -->
+      <script src="app.js"></script>
+      <script src="scripts\controller\MoviesControllers.js"></script>
+      <script src="scripts\controller\ActorControllers.js"></script>    
+      <script src="scripts\directive\headerApp.js"></script>
+	  
+      <header-app></header-app> 
+      <div class="container">
+		 <!-- Content body -->
+         <ng-view />
+      </div>
+   </body>
+</html>
+

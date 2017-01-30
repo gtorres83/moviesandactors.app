@@ -1,0 +1,115 @@
+<!-- 
+
+	Show info about the actor detail and your credits
+
+-->
+<h2 class="page-header">
+   {{ actor.name }}
+</h2>
+<!-- Panel that show detail actor info -->
+<div class="row">
+<!-- print the detail actor info -->
+   <div class="col-md-2">
+      <img class="center-topic thumbnail" ng-src="http://image.tmdb.org/t/p/w130/{{actor.profile_path}}" ng-hide="actor.profile_path == null"/>
+      <img class="center-topic thumbnail" ng-src="images/default_large.png" ng-hide="actor.profile_path != null"/>
+   </div>
+   <div class="col-xs-5">
+      <dl class="dl-horizontal">
+         <dt>Name :</dt>
+         <dd>{{ actor.name }}</dd>
+         <dt>Birthday :</dt>
+         <dd>{{ actor.birthday }}</dd>
+         <dt>DeathDay:</dt>
+         <dd>{{ actor.deathday }}</dd>
+         <dt>Genere:</dt>
+         <dd ng-if="actor.gender == 1">Female</dd>
+         <dd ng-if="actor.gender == 2">Male</dd>
+         <dt>Place of Birth:</dt>
+         <dd>{{ actor.place_of_birth }}</dd>
+         <dt>Popularity:</dt>
+         <dd>{{ actor.popularity }}</dd>
+         <dt>Biography:</dt>
+         <dd>
+            <p class="text-justify">{{ actor.biography }}</p>
+         </dd>
+      </dl>
+   </div>
+</div>
+<!-- Panel that show credits actor info -->
+<div class="col-md-7">
+   <div class="panel-group" id="accordion">
+	<!-- Panel that show the list credits movie -->
+      <div class="panel panel-default">
+         <div class="panel-heading">
+            <h4 class="panel-title">
+               <a href="javascript:;" data-toggle="collapse" data-parent="#accordion"  data-target="#collapse1">Movie Credits ({{listActorCredits.length}})</a>
+            </h4>
+         </div>
+         <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body">
+               <table class="table table-striped">
+			   <!-- print the result of the actor credits -->
+                  <tr ng-repeat="actorCredits in listActorCredits">
+                     <td>
+                        <div class="media">
+                           <div class="media-left">
+                              <a href="#/DetailMovie/{{actorCredits.id}}">
+                              <img class="media-object" ng-src="http://image.tmdb.org/t/p/w130/{{actorCredits.poster_path}}" ng-hide="actorCredits.poster_path == null"/>
+                              <img class="media-object" ng-src="images/default_large.png" ng-hide="actorCredits.poster_path != null"/>
+                              </a>
+                           </div>
+                           <div class="media-body">
+                              <h5 class="media-heading"><a href="#/DetailMovie/{{actorCredits.id}}">{{actorCredits.original_title}}</a></h5>
+                           </div>
+                        </div>
+                     </td>
+					 <td>
+						<div class="media-body">
+                              <h5 class="media-heading">...</h5>
+                        </div>
+					 </td>
+					 <td>
+						<div class="media-body">
+                              <h5 class="media-heading">{{actorCredits.character}}</h5>
+                        </div>
+					 </td>
+                     <td>{{actorCredits.release_date}}</td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </div>
+	  <!-- Panel that show the list crew actor -->
+      <div class="panel panel-default">
+         <div class="panel-heading">
+            <h4 class="panel-title">
+               <a href="javascript:;" data-toggle="collapse" data-parent="#accordion"  data-target="#collapse2">Crew ({{listActorCreditsCrew.length}})</a>
+            </h4>
+         </div>
+         <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+               <table class="table table-striped">
+			   <!-- print the result of the actor credits crew -->
+                  <tr ng-repeat="actorCredits in listActorCreditsCrew">
+                     <td>
+                        <div class="media">
+                           <div class="media-left">
+                              <a href="#/DetailMovie/{{actorCredits.id}}">
+                              <img class="media-object" ng-src="http://image.tmdb.org/t/p/w130/{{actorCredits.poster_path}}" ng-hide="actorCredits.poster_path == null"/>
+                              <img class="media-object" ng-src="images/default_large.png" ng-hide="actorCredits.poster_path != null"/>
+                              </a>
+                           </div>
+                           <div class="media-body">
+                              <h5 class="media-heading"><a href="#/DetailMovie/{{actorCredits.id}}">{{actorCredits.original_title}} ({{actorCredits.job}})</a></h5>
+                           </div>
+                        </div>
+                     </td>					 
+                     <td>{{actorCredits.release_date}}</td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
